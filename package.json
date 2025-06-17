@@ -1,0 +1,27 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "",
+
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekyneha/Food-App.git"
+  },
+  "author": "Neha Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geekyneha/Food-App/issues"
+  },
+  "homepage": "https://github.com/geekyneha/Food-App#readme",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
