@@ -2,8 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
   
 }
+/* header */
 .header-container{
     display: flex;
     justify-content: space-between;
@@ -23,28 +25,243 @@ nav > ul {
    
     border-radius: 50%;
 }
-.body-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+
+/* all .restaurant */
+
+.res-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 1rem;
 }
 
-.res-card{
+/* resCard */
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
 
-    border: 1px solid black;
-    padding: 5px;
-    margin: 10px;
-    width: 300px;
-    
-
-    line-height: 1.5;
-    font-family: Arial, Helvetica, sans-serif;
-
+  border-radius: 10px;
+  padding: 15px;
 }
-.res-card img{
+.card:hover {
+  cursor: pointer;
+}
+.image-container {
+  margin: auto;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin: 5px 0;
+}
+.food {
+  border-radius: 15px;
+  position: relative;
     width: 100%;
-    height: 200px;
-    
+    height: 100%;
+}
+.name-rating {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+.restaurant {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  margin: 0;
+}
+.rating {
+  padding: 0.3rem 0.5rem;
+  color: #20963c;
+  border: 1px solid #f0f0f0;
+  background: white;
+  border-radius: 5px;
+  width: 60px;
+}
+.rating-icon {
+  margin-right: 0.3rem;
+}
+.cuisines {
+  font-size: small;
+  color: #5d5d5d;
+  margin: 0.5rem 0;
+}
+.promoted {
+  position: absolute;
+  top: 0;
+
+  padding: 3px 5px;
+  margin-left: 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  background-color: rgba(44, 44, 45, 0.644);
+}
+.offer {
+  position: absolute;
+  bottom: 0;
+  background-color: #266fef;
+  color: #fff;
+  padding: 1px 10px;
+}
+.delivery-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #000;
+  font-size: 1rem;
+  background-color: #fff;
+  margin-right: 15px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+.max-safety {
+  display: flex;
+}
+
+.container {
+  height: fit-content;
+  background-color: #3c9e89;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0;
+  font-size: 12px;
+  position: relative;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.safety {
+  background-color: #f6af77;
+  width: 90%;
+  padding: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin: 3px auto 0 auto;
+}
+.delivery {
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 0 4px;
+}
+.about-safety {
+  color: #717070;
+  font-size: small;
+}
+
+@media screen and (max-width: 300px) {
+  .card {
+    width: 90vw;
+  }
+ 
+}
+
+.filter-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.filter-btn{
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+
+}
+.login{
+    padding: 10px;
+    background-color: #faba31;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius:5px;
+
+}
+/* Res Card shimmer */
+
+/* shimmer base styles */
+.shimmer-animate {
+  background: linear-gradient(
+    to right,
+    #eeeeee 0%,
+    #dddddd 50%,
+    #eeeeee 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* shimmer card layout */
+.shimmer-card {
+  width: 300px;
+  height: 350px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 60px;
+}
+
+/* shimmer elements */
+.shimmer-img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.shimmer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shimmer-line {
+  height: 15px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
+
+.shimmer-line.short {
+  width: 60%;
+}
+
+.shimmer-line.tiny {
+  width: 90px;
+  height: 10px;
+}
+
+.shimmer-box {
+  width: 80px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
+
+.shimmer-safety {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
