@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +8,7 @@
   
 }
 /* header */
-.header-container{
+/* .header-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +26,7 @@ nav > ul {
 .logo{
    
     border-radius: 50%;
-}
+} */
 
 /* all .restaurant */
 
@@ -101,7 +103,7 @@ nav > ul {
   border-radius: 5px;
   color: white;
   font-size: 1rem;
-  background-color: rgba(44, 44, 45, 0.644);
+  
 }
 .offer {
   position: absolute;
@@ -264,4 +266,81 @@ nav > ul {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.error-container img{
+  width: 300px;
+  height: 300px;
+}
+
+/* Menu Css */
+.menu-container {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 24px 32px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #282c3f;
+}
+
+.menu-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.menu-container h2 {
+  font-size: 16px;
+  color: #686b78;
+  font-weight: 400;
+  margin: 4px 0;
+}
+
+.menu-container h3 {
+  font-size: 14px;
+  color: #3d9b6d;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.menu-item {
+  margin-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e9e9eb;
+}
+
+.menu-item li {
+  list-style: none;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #02060c;
+}
+
+.menu-item p {
+  font-size: 14px;
+  color: #535665;
+  margin: 4px 0;
+}
+
+
+.custom-link {
+  text-decoration: none;
+  color: inherit;
+}
+.custom-link:hover {
+  color: #fc8019; /* Swiggy orange */
+}
+
+li{
+  cursor: pointer;
 }

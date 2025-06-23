@@ -1,10 +1,9 @@
 import { CDN_URL } from "../utils/constant.js";
+
 const ResCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, costForTwo, avgRating, cuisines, sla } =
     resData?.info;
-
-  // export default ResCard;
 
   return (
     <div className="card">
@@ -15,7 +14,7 @@ const ResCard = (props) => {
           className="food"
           width={295}
         />
-        <p className="promoted">Promoted</p>
+        <p className="promoted bg-green-700 ">Promoted</p>
 
         <p className="delivery-time">{sla.deliveryTime} min</p>
       </div>

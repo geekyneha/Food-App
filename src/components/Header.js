@@ -1,27 +1,35 @@
 import { Logo_URL } from "../utils/constant.js";
-import { useState } from "react";
+import { useState, startTransition } from "react";
+import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
-console.log("Header component rendered");
+import useOnlineStatus from "../utils/useOnlineStatus.js";
 const Header = () => {
   // let btnName = "Login";
   const [btnNameReact, setbtnNameReact] = useState("Login");
+  const onlineStatus = useOnlineStatus();
+  const navigate = useNavigate();
   console.log("Header component rendered");
   return (
-    <div className="header-container">
-      <div className="logo">
+    <div className="flex justify-around items-center p-4 border-1  ">
+      <div>
         <img src={Logo_URL} width={60} alt="logo" />
       </div>
       <nav>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+        <ul className="flex gap-4 text-2xl">
+          <li> online : {onlineStatus ? "🟢" : "🔴"}</li>
+          <li onClick={() => navigate("/")}>Home</li>
+          <li onClick={() => startTransition(() => navigate("/about"))}>
+            About
+          </li>
+          <li onClick={() => navigate("/contact")}>Contact</li>
+
           <li>Cart</li>
         </ul>
       </nav>
       <div>
         <button
-          className="login"
+          className=" w-20 h-8  rounded-md bg-amber-300  text-white text-lg "
           onClick={() => {
             // btnName = "logout";
             // alert("Login button clicked" + " " + btnName);

@@ -1,6 +1,7 @@
-import ResCard from "./ResCard";
 import { useState, useEffect } from "react";
 import ResCardShimmer from "./ResCardShimmer";
+import { Link } from "react-router";
+import ResCard from "./ResCard";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -17,7 +18,7 @@ const Body = () => {
   // first render
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9628669&lng=77.57750899999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -94,7 +95,14 @@ const Body = () => {
         </div>
         <div className="res-container">
           {filteredRestaurant.map((restaurant) => {
-            return <ResCard key={restaurant.info.id} resData={restaurant} />;
+            return (
+              <Link
+                key={restaurant.info.id}
+                to={"restaurant/" + restaurant.info.id}
+              >
+                <ResCard resData={restaurant} />
+              </Link>
+            );
           })}
         </div>
       </div>
