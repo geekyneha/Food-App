@@ -1,10 +1,13 @@
 import ResCardShimmer from "./ResCardShimmer.js";
 import { useParams } from "react-router";
 import useFetchData from "../utils/useFetchData.js";
+import { useState } from "react";
+import MenuCatagory from "./MenuCatagory.js";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useFetchData(resId);
+  const [showIndex, setShowIndex] = useState(null);
 
   if (resInfo === null) return <ResCardShimmer />;
 
@@ -14,7 +17,15 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
 
-  console.log(resInfo?.cards);
+  console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categories);
+
   return (
     <>
       <div className="menu-container">
@@ -24,16 +35,16 @@ const RestaurantMenu = () => {
         <h2>{costForTwoMessage}</h2>
         <h2>Popular Dishes:</h2>
 
-        {itemCards?.map((item) => {
-          const { id, name, description, price } = item.card.info;
-          return (
-            <div className="menu-item" key={id}>
-              <li>{name}</li>
-              <p>{description}</p>
-              <p>Price: ₹{price / 100}</p>
-            </div>
-          );
-        })}
+        {/* Catgories accordian*/}
+        {categories.map((category, index) => (
+          //here we are lifting state up ad giving this menu catagory the power to show or hide the items
+          <MenuCatagory
+            data={category?.card?.card}
+            key={category?.card?.card?.title}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+          />
+        ))}
       </div>
     </>
   );
