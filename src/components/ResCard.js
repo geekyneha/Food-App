@@ -14,7 +14,6 @@ const ResCard = (props) => {
           className="food"
           width={295}
         />
-        <p className="promoted bg-green-700 ">Promoted</p>
 
         <p className="delivery-time">{sla.deliveryTime} min</p>
       </div>
@@ -40,6 +39,17 @@ const ResCard = (props) => {
       </div>
     </div>
   );
+};
+
+export const withPromotedLabel = (ResCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="promoted">Promoted</label>
+        <ResCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default ResCard;

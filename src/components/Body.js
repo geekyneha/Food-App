@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import ResCardShimmer from "./ResCardShimmer";
 import { Link } from "react-router";
 import ResCard from "./ResCard";
+import { withPromotedLabel } from "./ResCard";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const RestaurantCardPromoted = withPromotedLabel(ResCard);
 
   // whenever a state variable update, react triggers a reconciliation cycle (re-renders the componenet)
   // load page -> show shimmer UI -> Fetch Data (usEffect)-> Render UI
@@ -31,6 +33,7 @@ const Body = () => {
     setFilteredRestaurant(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
+    console.log(listOfRestaurants);
   };
 
   // conditional rendering
@@ -100,7 +103,12 @@ const Body = () => {
                 key={restaurant.info.id}
                 to={"restaurant/" + restaurant.info.id}
               >
-                <ResCard resData={restaurant} />
+                {console.log(restaurant.info.isOpen)}
+                {restaurant.info.veg === true ? (
+                  <RestaurantCardPromoted resData={restaurant} />
+                ) : (
+                  <ResCard resData={restaurant} />
+                )}
               </Link>
             );
           })}

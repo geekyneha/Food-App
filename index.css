@@ -96,13 +96,14 @@ nav > ul {
 }
 .promoted {
   position: absolute;
-  top: 0;
-
   padding: 3px 5px;
   margin-left: 20px;
   border-radius: 5px;
-  color: white;
+  color: wheat;
   font-size: 1rem;
+  background: green;
+
+  z-index: 2;
   
 }
 .offer {
@@ -228,6 +229,8 @@ nav > ul {
 }
 
 /* shimmer elements */
+
+
 .shimmer-img {
   width: 100%;
   height: 180px;
