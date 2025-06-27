@@ -1,9 +1,12 @@
 import MenuItems from "./MenuItems";
+import { useState } from "react";
 
 ///controlled component it deos not maintain its own state. It is controlled by its parent.
 const MenuCatagory = ({ data, showItems, setShowIndex }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const handleShowItems = () => {
     setShowIndex();
+    setIsOpen(!isOpen);
   };
   return (
     <>
@@ -16,11 +19,11 @@ const MenuCatagory = ({ data, showItems, setShowIndex }) => {
           {data.title} ({data.itemCards.length})
         </div>
         <button className="text-xl text-gray-600 transition-transform duration-300">
-          ^
+          {isOpen ? "v" : "^"}
         </button>
       </div>
       {/* accordian body*/}
-      <div>{showItems && <MenuItems Items={data.itemCards} />}</div>
+      <div>{showItems && isOpen && <MenuItems Items={data.itemCards} />}</div>
     </>
   );
 };
