@@ -1,13 +1,16 @@
 import { Logo_URL } from "../utils/constant.js";
-import { useState, startTransition } from "react";
+import { useState, startTransition, useContext } from "react";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
+import UserContext from "../utils/UserContext.js";
 
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+
 const Header = () => {
   // let btnName = "Login";
   const [btnNameReact, setbtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   console.log("Header component rendered");
   return (
@@ -39,6 +42,7 @@ const Header = () => {
           {btnNameReact}
         </button>
       </div>
+      <div>user : {loggedInUser}</div>
     </div>
   );
 };

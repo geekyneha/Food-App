@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ResCardShimmer from "./ResCardShimmer";
 import { Link } from "react-router";
 import ResCard from "./ResCard";
 import { withPromotedLabel } from "./ResCard";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { loggedInUser, setUserName } = useContext(UserContext);
   const RestaurantCardPromoted = withPromotedLabel(ResCard);
 
   // whenever a state variable update, react triggers a reconciliation cycle (re-renders the componenet)
@@ -95,6 +97,14 @@ const Body = () => {
           >
             Top Rated
           </button>
+
+          <input
+            type="text"
+            placeholder="username"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+            className="filter-btn"
+          />
         </div>
         <div className="res-container">
           {filteredRestaurant.map((restaurant) => {
