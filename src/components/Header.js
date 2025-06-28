@@ -3,7 +3,7 @@ import { useState, startTransition, useContext } from "react";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import UserContext from "../utils/UserContext.js";
-
+import { useSelector } from "react-redux";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 const Header = () => {
@@ -12,6 +12,8 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const cartItems = useSelector((store) => store.cart.items);
   console.log("Header component rendered");
   return (
     <div className="flex justify-around items-center p-4 border-1  ">
@@ -27,7 +29,7 @@ const Header = () => {
           </li>
           <li onClick={() => navigate("/contact")}>Contact</li>
 
-          <li>Cart</li>
+          <li>Cart ({cartItems.length} items)</li>
         </ul>
       </nav>
       <div>
