@@ -8,9 +8,10 @@ import Contact from "./src/components/pages/Contact.js";
 import ErrorPage from "./src/components/pages/ErrorPage.js";
 import RestaurantMenu from "./src/components/RestaurantMenu.js";
 import UserContext from "./src/utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore.js";
 
 const About = lazy(() => import("./src/components/pages/About.js"));
-
 const AppLayout = () => {
   const [userName, setUserName] = useState();
 
@@ -22,12 +23,14 @@ const AppLayout = () => {
     setUserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app-layout">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app-layout">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
