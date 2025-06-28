@@ -1,5 +1,6 @@
 import MenuItems from "./MenuItems";
 import { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 ///controlled component it deos not maintain its own state. It is controlled by its parent.
 const MenuCatagory = ({ data, showItems, setShowIndex }) => {
@@ -19,7 +20,7 @@ const MenuCatagory = ({ data, showItems, setShowIndex }) => {
           {data.title} ({data.itemCards.length})
         </div>
         <button className="text-xl text-gray-600 transition-transform duration-300">
-          {isOpen ? "v" : "^"}
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
         </button>
       </div>
       {/* accordian body*/}
