@@ -6,7 +6,7 @@ const cartSlice = createSlice({
   name: "cart",
   //this is the initial state
   initialState: {
-    items: ["burger", "pizza", "pasta"],
+    items: [],
   },
   //this is the reducer. which is used to update the state. It contains the actions.
   reducers: {

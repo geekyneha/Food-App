@@ -29,7 +29,9 @@ const Header = () => {
           </li>
           <li onClick={() => navigate("/contact")}>Contact</li>
 
-          <li>Cart ({cartItems.length} items)</li>
+          <li onClick={() => navigate("/cart")}>
+            Cart ({cartItems.length} items)
+          </li>
         </ul>
       </nav>
       <div>

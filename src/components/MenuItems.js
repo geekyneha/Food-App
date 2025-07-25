@@ -1,6 +1,14 @@
 import { CDN_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItems, removeItem } from "../utils/cartSlice";
 const MenuItems = ({ Items }) => {
   console.log(Items);
+  // this dispatch is a function that is used to update the state
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItems(item));
+  };
+
   return (
     <>
       {Items.map((item) => {
@@ -17,7 +25,10 @@ const MenuItems = ({ Items }) => {
                   height="60px"
                   alt={name}
                 />
-                <button className="px-3 py-1 bg-white text-green-600 border-green-500 border relative bottom-2 left-4">
+                <button
+                  onClick={() => handleAddItem(item)}
+                  className="px-3 py-1 bg-black rounded-sm text-white cursor-pointer relative bottom-4 left-7"
+                >
                   Add +
                 </button>
               </div>

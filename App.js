@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 import Contact from "./src/components/pages/Contact.js";
 import ErrorPage from "./src/components/pages/ErrorPage.js";
+import Cart from "./src/components/pages/Cart.js";
 import RestaurantMenu from "./src/components/RestaurantMenu.js";
 import UserContext from "./src/utils/UserContext.js";
 import { Provider } from "react-redux";
@@ -58,6 +59,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <ErrorPage />,
